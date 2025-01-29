@@ -1,0 +1,17 @@
+{
+  "name": "tute3",
+  "version": "1.0.0",
+  "description": "Node js Learning from Hello World ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node --watch server.js"
+  },
+  "author": "jhunna kumar",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "express": "^4.21.2",
+    "mongoose": "^8.9.5"
+  }
+}
