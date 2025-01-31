@@ -19,6 +19,11 @@ const PORT = process.env.PORT || 5006; // Use 5005 if 5004 is blocked
 app.use('/person', PersonRouter);
 app.use('/menu', MenuRouter);
 
+//testing..
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
 // Start server
 connectDB()
 .then(() => {

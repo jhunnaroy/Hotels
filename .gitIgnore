@@ -1,2 +1,4 @@
 # gitignore moduls delete dirctory
 node_modules/
+
+.env
