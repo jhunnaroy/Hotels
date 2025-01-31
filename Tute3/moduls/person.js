@@ -1,41 +1,35 @@
 const mongoose = require('mongoose');
-
 // Define the Person schema
-const PersonSchema = new mongoose.Schema({
+const personSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: [true, 'Name is required']
+        required: true
     },
-    age: {
+    age:{
         type: Number
     },
-    work: {
+    work:{
         type: String,
         enum: ['chef', 'waiter', 'manager'],
-        required: [true, 'Work is required']
+        required: true
     },
-    mobile: {
+    mobile:{
         type: String,
-        required: [true, 'Mobile number is required']
+        required: true
     },
-    email: {
+    email:{
         type: String,
-        required: [true, 'Email is required'],
+        required: true,
         unique: true
     },
-    address: {
+    address:{
         type: String
     },
-    salary: {
+    salary:{
         type: Number,
-        required: [true, 'Salary is required'],
-        min: [0, 'Salary must be a positive number']
+        required: true
     }
 });
-
-
-
-
 // Create Person model
-const Person = mongoose.model('Person', PersonSchema);
+const Person = mongoose.model('Person', personSchema);
 module.exports = Person;

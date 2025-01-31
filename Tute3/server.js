@@ -1,21 +1,31 @@
 const express = require('express');
-
-const db = require('./db'); // Ensure correct path to database module
+const mongoose = require('mongoose');
+require('dotenv').config();
+const bodyParser = require('body-parser');
+const PersonRouter = require('./router/PersonRouter');
+const MenuRouter = require('./router/Menuitem');
+const { connectDB } = require('./db');
 
 const app = express();
-const PersonRouter=require('./router/PersonRouter');
-app.use('/person',PersonRouter);
-const MenuItem=require('./router/Menuitem')
-app.use('/menu',MenuItem);
+
+app.use(bodyParser.json()); // Move this AFTER app initialization
+
+const PORT = process.env.PORT || 5006; // Use 5005 if 5004 is blocked
+
+// Import routers
 
 
+// Use routers
+app.use('/person', PersonRouter);
+app.use('/menu', MenuRouter);
 
-// Start the server
-const PORT = 4002; // Use a different port if needed
-app.listen(PORT, () => {
-    console.log(`Server is running on address http://localhost:${PORT}`);
-});
-
-
-
-
+// Start server
+connectDB()
+.then(() => {
+  app.listen(PORT , () => {
+    console.log("Server is running on port : ",PORT)
+  })
+})
+.catch((err) => {
+  console.log(`We can't start server becuase database connection failed due to this error : ${err}`)
+})
